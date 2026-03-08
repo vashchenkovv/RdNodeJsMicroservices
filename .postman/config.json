@@ -1,0 +1,15 @@
+{
+  "workspace": {
+    "id": "e57d715c-c8bb-44a5-8885-d002361c0bb6"
+  },
+  "entities": {
+    "environments": [],
+    "flows": [],
+    "globals": [],
+    "mocks": [],
+    "specs": [
+      "..\\proto\\payments.proto"
+    ],
+    "collections": []
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "38b36bf8-f653-489e-ba3d-5fdcfd0e01da",
+  "name": "Globals",
+  "values": [
+    {
+      "key": "payment_id",
+      "value": "",
+      "enabled": true,
+      "type": "default",
+      "description": ""
+    }
+  ],
+  "_postman_variable_scope": "globals",
+  "_postman_exported_at": "2026-03-08T15:57:30.302Z",
+  "_postman_exported_using": "Postman/11.0.0"
+}

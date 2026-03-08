@@ -1,0 +1,162 @@
+{
+  "info": {
+    "_postman_id": "fc784ddc-f980-40cd-a8d8-ceac621bf5ce",
+    "name": "microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Pay Order",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "2af73165-e6a0-4757-9ac7-4c574a10659a",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "bc29bbd5-2fcb-4f07-bf61-1501021fc55d",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "const paymentId = jsonData.paymentId; \r",
+              "pm.globals.set(\"payment_id\", paymentId);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "23d7f066-e6f3-43fc-9950-dcf8d2c43777",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"userId\": \"2dd3624a-e593-4d3b-a3f7-b6ede358e6e9\",\r\n    \"amount\": 100,\r\n    \"currency\": \"USD\",\r\n    \"idempotencyKey\": \"1111\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3021/orders/8d71ab32-e416-4589-b809-366563b0dc5c/pay",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3021",
+          "path": [
+            "orders",
+            "8d71ab32-e416-4589-b809-366563b0dc5c",
+            "pay"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get payment status",
+      "id": "dfc3df8d-28fe-4362-b310-c91142e5507e",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3021/orders/payments/{{payment_id}}/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3021",
+          "path": [
+            "orders",
+            "payments",
+            "{{payment_id}}",
+            "status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Simulate Unavailable Once",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "de5a0560-65a8-4b66-be40-38267070ab6a",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1bb4e3a5-8187-4d4e-94c3-e5f32af0b2d4",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "const paymentId = jsonData.paymentId; \r",
+              "pm.globals.set(\"payment_id\", paymentId);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "112f8a42-d4a1-4333-9c23-4f6347b94372",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"userId\": \"2dd3624a-e593-4d3b-a3f7-b6ede358e6e9\",\r\n    \"amount\": 200,\r\n    \"currency\": \"USD\",\r\n    \"idempotencyKey\": \"222\",\r\n    \"simulateUnavailableOnce\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3021/orders/a38c22a8-1173-4493-9025-d8b435a3ce55/pay",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3021",
+          "path": [
+            "orders",
+            "a38c22a8-1173-4493-9025-d8b435a3ce55",
+            "pay"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
